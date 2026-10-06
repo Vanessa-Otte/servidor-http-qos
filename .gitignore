@@ -1,0 +1,15 @@
+# Arquivo feito para evitar subir arquivos que não devem ir para o repositório
+
+# Binários compilados
+*.o
+servidor
+mvp1/servidor
+mvp2/servidor
+
+# Arquivos temporários
+*.tmp
+*~
+
+# Pastas de IDE
+.vscode/
+*.code-workspace

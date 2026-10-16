@@ -1,0 +1,184 @@
+GET / HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.9
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: none
+Sec-Fetch-User: ?1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: text/html; charset=UTF-8
+Content-Length: 394
+Connection: keep-alive
+
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Servidor HTTP/1.1</title>
+</head>
+<body>
+
+    <h1>Servidor Experimental HTTP/1.1</h1>
+    <hr>
+
+    <h2>Arquivos Dispon..veis para Teste</h2>
+    <ul>
+        <li><a href="/teste.txt">Texto</a></li>
+        <li><a href="/foto.jpg">Imagem</a></li>
+        <li><a href="/404.html">Gabarito da prova de Redes</a></li>
+    </ul>
+
+    <hr>
+
+
+
+</body>
+</html>
+GET /teste.txt HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.9
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: text/plain; charset=UTF-8
+Content-Length: 29
+Connection: keep-alive
+
+Teste arquivo com formato.txt
+GET /foto.jpg HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.9
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Priority: u=0, i
+
+
+HTTP/1.1 200 OK
+Content-Type: image/jpeg
+Content-Length: 9267
+Connection: keep-alive
+
+......ICC_PROFILE.......lcms....mntrRGB XYZ .........).9acspAPPL...................................-lcms...............................................
+desc.......^cprt...\....wtpt...h....bkpt...|....rXYZ........gXYZ........bXYZ........rTRC.......@gTRC.......@bTRC.......@desc........c2..................................................................................text....FB..XYZ ...............-XYZ ...........3....XYZ ......o...8.....XYZ ......b.........XYZ ......$.........curv...............c...k...?.Q.4!.).2.;.F.Qw].kpz....|.i.}...0.....C................
+.....
+	
+.
+.
+...
+...................................C............................................................................".....................................	...A.........................!.1AQ.."a.q..2..#BR....3br....CSs.%4.................................%........................!1."2AQaq..............?..@#J...h.6#.C	`#..*...,'. #.)P.4.CJx.6..e!.iC	....Q@3.4..0..c..0.-..N..,.r@.:6...|..x.t...5.
+	..R..2..ZS..N.!.(.
+....Qe.v.C......J.....E...l.Qe0.D]....t(..$:!...Zcd`l{ .2....,..J
+....,sC.8@.$..DhN}I....@.Tg ....R..#l.s...+8G.d......4.(..rS!.I.......iM.m..@.....D\7M..?D....:..........u..Q)Gt0.
+.J..EQ,Tt.....JV~9...F...@Q.....3.l..w:f.C...d...KI..@..]6FSd.@.......F.......a....$.#J0..c.O.xC."..`.#..kZ-J.!C..H...E..$..Y.".e#;$.iX..^p...n....1...q.......,.......IK1.....0.
+....a..G...OT.YE....	)ZHC.. ,..."[|8.2..?..U..u........c.]..........n...SY.YA@.a.2.&..wA........\i5...fumUA.......c.ch.6.....B.l.A......K..|.)H.T.t....DQ..r.3..v......xj...z;.S(+..a..!-..6.qi.B.....=
+.#dLc....a.Z..E....1.K.1...v.....W%...m.n.9..8Ma=#..........Cr.c....R..hCM.>.......:.c.hA2,. B07(..N.d.=..54.e:...(....u(..Y.....Q...`a.0.g..J.4m	%.`...L...@.....BS.>N.........=......."ym....7...<...Dlq....s....3K..}g.mU....JF..........B.q5<C.Ke[....;...B..>...Gad..o..Kv
+.........T.'......6W....p....3k.......Y.]..u.q........PI.g..=.#........qCW...:'.gX.s...r....V.r...e......L..gA#.....s..o..p=\y&..q...U.....Jh.)..c....\?..y..O.m,^4....m...&c..g...}.......-vgqi......,_...d.......[............~..FY.T.1.k..3.............i.U.?..|....\w.....Y%.`..C.h.A:.p..e..W	....}.H.^.$..Ait........'8..(.......%l.i......}G$...Z...M.-...M3+=Ew..G...$u..rin.t...dm...S.z........>L.W.e....g.\..<=..?........0i....d..Fs..{"..7..I\Xv.g8...mN.X.........R..V.zFw.@..\MU.g...#t..h&.....n......Y#..M+.b...k.....\..x&........H.q.G.K...9....F2...ER..m..4.<.e1..Oc2....*&m.!..P.=..f.J..........<.....6..d.~.9.....^......?....*...<"H..>....@..U....G...9..U....Sl..S.0R...l..$c .~mN.Xvt0iw{O.1.Z.5.Hh;...jw2).....r..."./h!.....!p
+`
+.....m..:.(.F..KK.._.(.n.	[_Nq......,......:k.
+.]3..j..d..I.Xz.y.^...4..6p<..,..\.x*./.K..\.:..c.I.9.;c.........o..u.1...c.2VF..4....6;[4...S.c...vhax.{wk.G..b..O+).....6..]^%....U.%...g
+...:gy-....Xw...vG.7..ZH.y.x..Qht..d....p.W......'...j..?Q...gb...+...-..3.o|n..i..pcY.3......'[..0.....~&.h...6i.2.Ic\2^7.......) h..ld....V..Ss..:[..........r...N.W...e"...I.Q...TR7...;..U.t...uFMFx.~...I.l...K...?.]+....gl../|...
+..A.........e.zi.8.Kc.i-p.F.h8'.%...N/.TYm~L.2S...B?V.^@
+..[.O-..
+..?.,sK..;..x.As.e..h.n......9..O.?E..7.Y..>C<.....qpqt}.:.U...(.N.AI
+.;eT.iq..$o...9....{...x.Sl7.T.yt2.4..S..8....r8P..h.8)Z7`...D.....c.^1..:.;.Lu..8P[..c...S..:...%/...w.Cwe(....p.h.bh....I?U.(+i|`..X(.d<6..Yq...+Y.5..8...z:.K...
+:...h...5.a..I..K.1..../.7*.!.WD.5m.+BF;%0a86M.!.J..d..M...M.a0.Gm..Z.N...i.e0
+... .I....;.I.Q.EU...\.`...S.D.}..>U1:s.p..CO,."6h.....j+.'KM..i.K..<9..y*..n..4..m.vZ+O....T8...#.#....1.U.j.~8.y..s)..4...........q..-i89hp...).....u.w.....'P.H.....)......gO/..|oa76.V2y.e..X.#....."9..P....KHv]..WV.....3.........F7.`../..?Yz...(......T\p0O-...K.....lc.*....g.i....r9..>......UEp...h+...2.0.].I..	...u...p..s{...f.
+....i...#;.6.A...%...3.3#....=u....ae...SGN$..=..rG/...o.2.x7*..T............u.x.~2.._3.5.=.'..k.....AW...C%.5.yn.1....XVD....4..p..."..x.ASI............8;.,s...6i.nx8\G.n......2...ys[..C........./...|-2S.L.8.8......deU...U.....'V	........e...+_..x!.Oj.D....9...y...A.e..T....9.@?.).RCOT.Y...9...S.[....:...us._4Q[]..@l...
+Y8.2OL..T..]...].*..r`.G...b.|.A5......$.......bhk..JijtUG..K\...._e...-.E...N...`oNX.n..-C...........W.|.O.r....j....kH.D....o.]6.....2.c...F...{+[ty9+~5I#.9n.h..n........p.......... .dnw.*;.k.......#Q%5...E.g.@.8.sMi(.....C.D..
+.N..:.......M...![\..
+....#e..b.g=.....E.....l{gCI....H..P>G4.~..[;U.!.p.....t.D.#s........d.\t..t..6|<@._$.K.J...#.C.@.'-=.n.V..........h.......13KF...t.c.&...$...............\.uc....$.i...<.O..,
+
+....1+L..e......uvw.j....}..g.>.[........a9.v.S.Q.].Yc..<.8.I....v.qlm~.0yg.GN.U.g...:...6..q]I..P....#...............F@...6..mM.. ...h;.{.m.....!>T...?%.o....U.;..MV..x.r7..P..|..e.kC.N6....y........M.....\&.I<Q.'...a.
+..I...u.o.qn/....I.J........v.s=.-.|..3.....'32...,....t..-.uw..t.+#.s......d...;...vV.............7r.c.:..........f.......3H.-...oy..`......K...xC.e...v.=.K..!a.	|..P...F..........xM....a...W..|t.N....|C...Zj.O..F..a.!......~l..........$....Nyc.......G.>..o.=..d.8..4.a...].#.#G....0.%..
+.	.......g
+...v.=........D{.I..l.3...
+^.?%...V..; .....G.=TG7...&.$.".Ih..O.S..../).T.c..!..1.i-.....B..\8....#I~..k~..ha.:.6...9......G ...._..h.X...OA.........F..#>..
+...p.+...?..F..C...;tL.........s^78)m...d.....
+..<..#......Hi....L .6........7.".n.....7...D#.+..;.
+l`.....E.M..M.	 ..O..L..Y.....s.}=..X...WKTL...j9..V.G..04...>..n...OM...:.9..\.......g..
+......Ys...~).w....#....KkC\\...B.P....n=.V..}...X...d^Ss.i.g.......p]MK.........K...C[...s..#..........'r..$..y...}MQ....Qm..c.YGc.R..;+.'...a..!..w^....Y&...F..;..M.g.h.@WB	...eh..;|V.Dt....#..[...o8....z...@.4..u.g/.70.`..1.].E...>N7{...u14.N..'.e6.f.....a`..'..f.&........7......&.~..Q...:e......O6G8z.H$...7.Y.~)..#..*lUMw':7~J.Q..l....A
+\.%./..'.$R........3..).....=.}..N4.p.t....&..x..]C.V...@
+.d.*Vi.*.
+.U...=.......k...dD......@.
+.	..2.5.9.$..V..H....9ay...m..c...F..... ..	Oy...9aC.....N...:.L....T.$..q.?r..b/.;..T..........tr.N....\................s.......nv8U..2.2..5m..
+p.NNH.UM\n..Z2Zz.....
+.--...W.........V..&ck...Hp	.....WF..q..%mv.d.pa:...vU1.S......~.............1.L..i$..q.D*....Oa..)1g.....X......P...G.Q>......*....v.N...X...=O|%vE.$.m@...L.....2.[+.NN.4..s...O>.]	..%.D....gkc......c%Z<.
+..2....I'....%Lv
+F...x..r...Z.h.M....z......_.).X.H.r+...G..MP	/d.~..4...9...f2.).a!1H..J..=C...I..Sn..qK....!..&...;n...z$.q.C G#..N-*`.N.	E.Nn.	?....
+M.-JS..8.......YEt....~2C
+..VV.f-.|MC......M..
+.#b{,..H....pr....dE..#.^k...k.D.gm4n3~..*..C.......U...``.......P.e..TSD...4...t$...Sj.Xq.`.=..&a'.;.kO.E..{%........69....cA.T..*....t.....7.{O .YP...........^.*mpB/..}N.gk..{.-S....w....&...HN....xME;.. =.;..I.7ER.\.a......%.	..1.jf.i.Cv....k_.....1........h.#.)%D....
+.....GNjl..0...F.@....N..<..r...0.;...0...<..|.zaL........T...9-.0@o.V0..68'...$...4....
+.....w.;....-:].=.E.B......<)..\.R$...#od..$....p.*.@2Q1...tSi.........h.m....;
+....o..@..0q.........`n...q.;.jX.1R.P.;....;..Y..%d&...u...%sK......+.........s
+I.......SNRu.Z.......i.Qd^3...sU_.{...y........|...NjOt..(.6.5..R?[....u...SM..........<.#{.=@..s.D.k.57.EEX.}\...=.v.{.'...I.......`nJ...MIz....c.\@..
+...r..-....s.ckv.....,._..Hf....u.8CIs.
+$.....?u.g...R..>..J..`.g..[(...*.c/..6*..bsX..T.;N.i..q......;.....8%..j..ZG..x
+.L.d......g.me,V.8......|....q,1.Y...n.u.ES].5.K$NlZ...
+..(.)J.........T.L....q.@tn..k........\....../..m...|....[..".D..=.$.....}......O.6..P4.S.S.......$..5F.5..........j.rH...j).^..K... .....ns...AH...QsHn......u-.Kd.........1po....=.?..m...8.c...Fw'.....1.........L..
+.C.p..;;....$&....ZA..sN.l.0......t......N1.2.I	.........Cr.>..V..1.{....K.....F...v..f.T.....T4..o..;.._U*_dy}.W\0...[gc.C.......Y.X....0...=...#..9...;e.._'.8j..
+..7.?9.s.E.....7.........n....cis.<..h...i.,.-T..^2..8...H.. g......'....H./._^....&..fg.^[
+...{..d.1..c.X..m'(%...k...i...\"..s.x..<.GE.x..............IK[.....N.Z....26B.P......X.Z...U.r..;...F..3....~..,....KJ.[...[..\.QI......rCe..:{...w.... d.e..`a.v........#.^i..M....6s...\..:.\5J].pV.7.G.....H..U-|a.s\.6s].~...ou...._l......10z.......r3.V.x.....<K\.....q.
+[T..qK.{8.m..6jZ3....x......V...a-.%5]C..?.O#.z^.W.b.Er...............G...m5?....%...y......&..#pQ....r.R.....#.8.."/...N.#-s..VHI=z.V.....%....>cFA..=...{*.h...r...
+..0...P'....#.~3..ur`w<.Z)..qCs'.3.T.WG;.
+9...ALM.3*(%..tz.v..~..28...:'.
+);.e.F/.<....D...x..	%.....Y.............6....%.M.....';...*X.........P.
+vQ....R..
+.Y...|.Mv...#8
+..}..IM[O<d...	..;.B...x!..>....92
+3....VG.>.jl.1.vy...v.....+V.a.
+3...........m...&9..`...G...+.?.Hj..#...PPh.zgG..{%.-uW..X.s.....7X....*v..FT...k]...._S.N=........:...9...G...(.#..4....?5%..#..3..C.o.|<S.].....9..	......k?H..dt...W....}...Zi.l4a..hv...>...E.....x...G3.H.].b.6...(q.n.v.w.gu...V..H..X%q9s#9........	6..........^..1...N:..\.}..X..y...$.;.W.8..&.g5...\....._r.._Py.7.3..K..........6?...r..Z.... .O.S..p..U.y'.g%....9Es...9.......:.~.w.7s..
+x
+-.if.;ry.l|.]..i1...X..pF.$u...Ki.v8.2?..[e+h....L.....W._.u....G.S..#......\....s..Y.^...Y0%.m......M.....R..o.w.....<..g...j.b.s.S...L.:(....*e....(.dh........'..1.e...!n.c..#..S.....t..Jb..e.r]0..(....i%.$9.a...K.^..5'.X .k....,w6...h?B6X*....T.V.T......@=.W`...
+...dpo.vr......pr./.#>..E.....
+.5F9..E.....&.
+................Q&..#{7...G....D.Q...r...G..?t.Qd.fIO'..N...y=.( .K..Hz.).H..?t.J........M...$...(.$..$=	...........H[ex.R....` ...<....?t.O..........
+.:.O..H..?y...	..\.n.>..9...O......Hq.|.......t.V..$>..t~k.x..AH..+.x.SnvN.( .DFB-C...	.?..
+GET /404.html HTTP/1.1
+Host: localhost:8080
+User-Agent: Mozilla/5.0 (X11; Linux x86_64; rv:157.0) Gecko/20100101 Firefox/157.0
+Accept: text/html,application/xhtml+xml,application/xml;q=0.9,*/*;q=0.8
+Accept-Language: en-US,en;q=0.9
+Accept-Encoding: gzip, deflate, br, zstd
+Connection: keep-alive
+Referer: http://localhost:8080/
+Upgrade-Insecure-Requests: 1
+Sec-Fetch-Dest: document
+Sec-Fetch-Mode: navigate
+Sec-Fetch-Site: same-origin
+Sec-Fetch-User: ?1
+Priority: u=0, i
+
+
+HTTP/1.1 404 Not Found
+Content-Type: text/html; charset=UTF-8
+Content-Length: 55
+Connection: keep-alive
+
+<html><body><h1>404 - Nao Encontrado</h1></body></html>

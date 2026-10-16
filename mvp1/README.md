@@ -18,7 +18,7 @@ Após a compilação, será gerado o executável servidor.
 
 Execute o servidor com:
 ```bash
-./servidor`
+./servidor
 ```
 
 O servidor aguarda conexões na porta 8080.
@@ -28,7 +28,7 @@ Para acessar a página disponibilizada pelo servidor, utilize um navegador.
 ## Declaração de autoria
 Este projeto foi desenvolvido integralmente pela equipe, sem ajuda não autorizada de alunos não membros do projeto no processo de codificação.
 
-#### Fundamentos e Avaliação de Redes de Computadores
-#### Engenharia de Computação
-#### UNIPAMPA
-#### Semestre 2026/2
+<small>Fundamentos e Avaliação de Redes de Computadores</small>
+<small>Engenharia de Computação</small>
+<small>UNIPAMPA</small>
+<small>Semestre 2026/2</small>

@@ -1,4 +1,4 @@
-# Relatório de Testes de Carga e Tráfego HTTP
+# Testes de Carga e Tráfego HTTP
 
 Este diretório contém as evidências de testes de conexões persistentes e concorrência realizados no servidor HTTP/1.1.
 

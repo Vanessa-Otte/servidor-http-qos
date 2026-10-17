@@ -1,23 +1,108 @@
 <!DOCTYPE html>
-<html>
+<html lang="pt-BR">
 <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Servidor HTTP/1.1</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            margin: 0;
+            font-family: Arial, sans-serif;
+            background: #0b1120;
+            color: #f1f5f9;
+        }
+
+        header {
+            padding: 28px 8%;
+            background: #111c30;
+            border-bottom: 1px solid #26364d;
+        }
+
+        header h1 {
+            margin: 0;
+            color: #67e8f9;
+        }
+
+        main {
+            max-width: 1200px;
+            margin: auto;
+            padding: 40px 24px;
+        }
+
+        .galeria {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+            gap: 24px;
+        }
+
+        .cartao {
+            overflow: hidden;
+            background: #162238;
+            border: 1px solid #293a53;
+            border-radius: 14px;
+            transition: transform 0.2s;
+            
+            /* Garante que o cartão tenha uma altura mínima para vermos o alinhamento */
+            min-height: 120px; 
+            
+            /* Ativa o Flexbox no cartão */
+            display: flex;
+            flex-direction: column;
+            justify-content: center; 
+            align-items: center;     
+        }
+
+        .cartao:hover {
+            transform: translateY(-5px);
+        }
+
+        /* Removido o height fixo e object-fit que eram para imagens */
+        .link {
+            color: #bdc9d9;          
+            text-decoration: none;   
+            padding: 16px;           /* Espaçamento interno confortável para o clique */
+            font-size: 24px;
+            font-family: sans-serif; 
+            transition: color 0.3s;  
+            text-align: center;
+            
+            /* Transforma o próprio link em flexbox para alinhar o texto perfeitamente */
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            width: 100%;
+            height: 100%;            /* Faz o link ocupar o cartão todo */
+        }
+
+        .link:hover {
+            color: #67e8f9;          /* Efeito visual ao passar o mouse no link */
+        }
+    </style>
 </head>
 <body>
+    <header>
+        <h1>Servidor Experimental HTTP/1.1</h1>
+    </header>
 
-    <h1>Servidor Experimental HTTP/1.1</h1>
-    <hr>
-
-    <h2>Arquivos Disponíveis para Teste</h2>
-    <ul>
-        <li><a href="/teste.txt">Texto</a></li>
-        <li><a href="/foto.jpg">Imagem</a></li>
-        <li><a href="/404.html">Gabarito da prova de Redes</a></li>
-    </ul>
-
-    <hr>
-
-
-
+    <main>
+        <h2>Arquivos Disponíveis para Teste</h2>
+        <section class="galeria">
+            <article class="cartao">
+                <a href="/teste.txt" class="link">Texto</a>
+            </article>
+            
+            <article class="cartao">
+                <a href="/foto.jpg" class="link">Imagem</a>
+            </article>
+            
+            <article class="cartao">
+                <a href="/404.html" class="link">Gabarito da prova de Redes</a>
+            </article>
+        </section>
+    </main>
 </body>
 </html>

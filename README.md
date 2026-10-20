@@ -17,8 +17,8 @@ Para compilar e executar o projeto, é necessário um ambiente Linux com suporte
 
 ## Compilação e Execução
 Para obter informações sobre compilação e execução, consulte o arquivo README.md da versão MVP:
-- [MVP1](../mvp1)
-- [MVP2](../mvp2)
+- [MVP1](./mvp1)
+- [MVP2](./mvp2)
 
 ## Declaração de Autoria
 Este projeto foi desenvolvido integralmente pela equipe, sem ajuda não autorizada de alunos não membros do projeto no processo de codificação.

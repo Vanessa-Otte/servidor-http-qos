@@ -1,0 +1,336 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="description" content="Galeria de imagens para teste de QoS no servidor HTTP/1.1.">
+    <title>Galeria — Servidor HTTP/1.1 // QoS</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --verde: #46f08a;
+            --verde-claro: #a5ffc2;
+            --verde-profundo: #138d52;
+            --verde-escuro: #0c3a28;
+            --laranja: #ed663b;
+            --azul: #40b2e6;
+            --fundo: #07130f;
+            --superficie: #0d1d16;
+            --superficie-elevada: #11251b;
+            --borda: #1c3829;
+            --texto: #e8f5ec;
+            --texto-suave: #88a895;
+            --sinal: #c7ff5e;
+            --raio: 16px;
+            --largura: 1200px;
+        }
+
+        * { box-sizing: border-box; margin: 0; padding: 0; }
+
+        body {
+            min-height: 100vh;
+            padding: 28px clamp(16px, 4vw, 48px) 32px;
+            color: var(--texto);
+            background:
+                radial-gradient(ellipse at 50% -20%, rgba(38, 145, 82, .22), transparent 55%),
+                linear-gradient(rgba(83, 177, 112, .035) 1px, transparent 1px),
+                linear-gradient(90deg, rgba(83, 177, 112, .035) 1px, transparent 1px),
+                var(--fundo);
+            background-size: auto, 36px 36px, 36px 36px, auto;
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            line-height: 1.55;
+        }
+
+        a { color: inherit; }
+
+        .shell { max-width: var(--largura); margin: 0 auto; }
+
+        header {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            justify-content: space-between;
+            align-items: flex-start;
+            gap: 28px;
+            padding: clamp(24px, 4vw, 42px);
+            border: 1px solid var(--borda);
+            border-radius: 22px;
+            background: linear-gradient(118deg, rgba(17, 37, 27, .97), rgba(9, 25, 17, .94));
+            box-shadow: 0 18px 60px rgba(0, 0, 0, .2), inset 0 1px rgba(255, 255, 255, .025);
+        }
+
+        header::after {
+            content: "";
+            position: absolute;
+            width: 300px;
+            height: 300px;
+            top: -175px;
+            right: 8%;
+            border: 1px solid rgba(70, 240, 138, .12);
+            border-radius: 50%;
+            box-shadow: 0 0 0 28px rgba(70, 240, 138, .025), 0 0 0 58px rgba(70, 240, 138, .02);
+            pointer-events: none;
+        }
+
+        .cabecalho-conteudo { position: relative; z-index: 1; }
+		
+        h1 {
+            max-width: 720px;
+            font-size: clamp(1.8rem, 4vw, 3rem);
+            line-height: 1.08;
+            letter-spacing: -.045em;
+            font-weight: 720;
+        }
+
+        h1 span { color: var(--verde); }
+
+        .sobre {
+            max-width: 600px;
+            margin-top: 13px;
+            color: var(--texto-suave);
+            font-size: .98rem;
+        }
+
+        .voltar {
+            position: relative;
+            z-index: 1;
+            display: inline-flex;
+            align-items: center;
+            gap: 9px;
+            flex: 0 0 auto;
+            padding: 9px 15px;
+            border: 1px solid rgba(70, 240, 138, .3);
+            border-radius: 999px;
+            background: rgba(70, 240, 138, .07);
+            color: var(--verde-claro);
+            font: 650 .72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+            letter-spacing: .08em;
+            text-transform: uppercase;
+            text-decoration: none;
+            transition: background .2s ease, color .2s ease, border-color .2s ease;
+        }
+
+        .voltar::before { content: "←"; font-size: .95rem; }
+        .voltar:hover, .voltar:focus-visible {
+            background: var(--verde);
+            color: #0a1810;
+            border-color: var(--verde);
+        }
+        .voltar:focus-visible { outline: 2px solid var(--verde); outline-offset: 3px; }
+
+        main { padding: 42px 0 12px; }
+
+        .titulo {
+            display: flex;
+            justify-content: space-between;
+            align-items: end;
+            gap: 16px;
+            margin-bottom: 17px;
+        }
+
+        .titulo h2 { font-size: 1.05rem; letter-spacing: -.015em; }
+        .titulo p { color: var(--texto-suave); font-size: .79rem; }
+
+        .galeria-fotos {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(min(100%, 300px), 1fr));
+            gap: 18px;
+        }
+
+        .cartao-foto {
+            position: relative;
+            overflow: hidden;
+            display: flex;
+            flex-direction: column;
+            border: 1px solid var(--borda);
+            border-radius: var(--raio);
+            background: linear-gradient(145deg, var(--superficie-elevada), var(--superficie) 72%);
+            transition: transform .22s ease, border-color .22s ease, box-shadow .22s ease;
+        }
+
+        .cartao-foto:hover {
+            border-color: var(--verde-profundo);
+        }
+
+        .cartao-foto img {
+            display: block;
+            width: 100%;
+            height: 260px;
+            object-fit: cover;
+            background: #0a1710;
+            border-bottom: 1px solid var(--borda);
+        }
+
+        .legenda {
+            display: block;
+            padding: 14px 18px 16px;
+            color: var(--texto);
+            font: 600 .88rem/1.4 ui-monospace, SFMono-Regular, Menlo, monospace;
+            letter-spacing: .01em;
+        }
+
+        .rodape {
+            margin-top: 38px;
+            padding-top: 25px;
+            border-top: 1px solid var(--borda);
+        }
+
+        .rodape-grade {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 24px 36px;
+            padding-bottom: 23px;
+        }
+
+        .rodape-bloco h2 {
+            margin-bottom: 12px;
+            color: var(--texto-suave);
+            font: 700 .68rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+            letter-spacing: .14em;
+            text-transform: uppercase;
+        }
+
+        .rodape-bloco ul { list-style: none; display: flex; flex-direction: column; gap: 7px; }
+        .rodape-bloco li { display: flex; align-items: baseline; gap: 9px; color: #c8d9ce; font-size: .84rem; }
+        .rodape-bloco li::before { content: ">"; color: var(--verde); font-family: ui-monospace, monospace; font-weight: 700; }
+
+        .rodape-icone {
+            display: flex;
+            justify-content: right;
+            align-items: right;
+        }
+
+        .icone {
+            display: grid;
+            place-items: center;
+            width: 44px;
+            height: 44px;
+            border: 1px solid var(--borda);
+            border-radius: 12px;
+            background: var(--superficie);
+            color: var(--texto-suave);
+            transition: transform .2s ease, border-color .2s ease, color .2s ease, box-shadow .2s ease;
+        }
+
+        .icone:hover, .icone:focus-visible {
+            transform: translateY(-2px);
+            border-color: var(--verde-profundo);
+            color: var(--verde);
+            box-shadow: 0 0 18px rgba(70, 240, 138, .12);
+        }
+
+        .icone:focus-visible { outline: 2px solid var(--verde); outline-offset: 3px; }
+        .icone svg { width: 20px; height: 20px; fill: currentColor; }
+
+        .rodape-base {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            flex-wrap: wrap;
+            gap: 0.75rem;
+            padding-top: 1rem;
+            padding-bottom: 1rem;
+            border-top: 1px solid var(--borda);
+            color: var(--texto-suave);
+            font-size: .75rem;
+        }
+
+        .rodape-base .aviso { font-style: italic; }
+
+        @media (max-width: 720px) {
+            header { flex-direction: column; }
+            .voltar { align-self: flex-start; }
+            .rodape-base { flex-direction: column; }
+            .rodape-base .aviso { text-align: left; }
+        }
+
+        @media (max-width: 420px) {
+            body { padding: 16px 14px 24px; }
+            header { padding: 23px 19px; }
+            main { padding-top: 32px; }
+            .titulo { align-items: flex-start; flex-direction: column; gap: 4px; }
+            .cartao-foto img { height: 220px; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; transition: none !important; animation: none !important; }
+        }
+    </style>
+</head>
+<body>
+    <div class="shell">
+        <header>
+            <div class="cabecalho-conteudo">
+                <h1>Galeria de Imagens <span>// QoS</span></h1>
+            </div>
+            <a href="/index.html" class="voltar">Página Inicial</a>
+        </header>
+
+        <main>
+            <div class="titulo">
+                <h2>Imagens para Teste</h2>
+            </div>
+            <section class="galeria-fotos">
+                <article class="cartao-foto">
+                    <img src="/gataDormindoBemTapadinha.jpg" alt="Gata dormindo bem tapadinha no inverno">
+                    <span class="legenda">Gata dormindo bem tapadinha no inverno</span>
+                </article>
+
+                <article class="cartao-foto">
+                    <img src="/gataEmCimaDoBanquinho.jpg" alt="Gata em cima do banquinho">
+                    <span class="legenda">Gata em cima do banquinho</span>
+                </article>
+
+                <article class="cartao-foto">
+                    <img src="/gataDeitadaNoSolzinho.jpg" alt="Gata deitada no solzinho">
+                    <span class="legenda">Gata deitada no solzinho</span>
+                </article>
+
+                <article class="cartao-foto">
+                    <img src="/gataDistraida.jpg" alt="Gata distraída">
+                    <span class="legenda">Gata distraída</span>
+                </article>
+
+                <article class="cartao-foto">
+                    <img src="/gataDormindoDeBocaAberta.jpg" alt="Gata dormindo de boca aberta">
+                    <span class="legenda">Gata dormindo de boca aberta</span>
+                </article>
+
+                <article class="cartao-foto">
+                    <img src="/gataDormindoDeLinguinhaPraFora.jpg" alt="Gata dormindo de linguinha pra fora">
+                    <span class="legenda">Gata dormindo de linguinha pra fora</span>
+                </article>
+            </section>
+        </main>
+
+        <footer class="rodape" aria-label="Informações do projeto">
+            <div class="rodape-grade">
+                <section class="rodape-bloco">
+                    <h2>Integrantes</h2>
+                    <ul>
+                        <li>Lorhan Santos de Lima</li>
+                        <li>Vanessa Manzke Otte</li>
+                    </ul>
+                </section>
+
+                <section class="rodape-bloco">
+                    <h2 style="text-align:right">Repositório github</h2>
+                    <div class="rodape-icone">
+                        <a href="https://github.com/Vanessa-Otte/servidor-http-qos.git" target="_blank" rel="noopener noreferrer" class="icone" aria-label="Acessar repositório no GitHub">
+                            <svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24"><path d="M12 0C5.374 0 0 5.373 0 12c0 5.302 3.438 9.8 8.207 11.387.599.111.793-.261.793-.577v-2.234c-3.338.726-4.033-1.416-4.033-1.416-.546-1.387-1.333-1.756-1.333-1.756-1.089-.745.083-.729.083-.729 1.205.084 1.839 1.237 1.839 1.237 1.07 1.834 2.807 1.304 3.492.997.107-.775.418-1.305.762-1.604-2.665-.305-5.467-1.334-5.467-5.931 0-1.311.469-2.381 1.236-3.221-.124-.303-.535-1.524.117-3.176 0 0 1.008-.322 3.301 1.23A11.5 11.5 0 0 1 12 5.803c1.02.005 2.047.138 3.006.404 2.291-1.552 3.297-1.23 3.297-1.23.653 1.653.242 2.874.118 3.176.77.84 1.235 1.911 1.235 3.221 0 4.609-2.807 5.624-5.479 5.921.43.372.823 1.102.823 2.222v3.293c0 .319.192.694.801.576C20.566 21.797 24 17.3 24 12c0-6.627-5.373-12-12-12"/></svg>
+                        </a>
+                    </div>
+                </section>
+            </div>
+
+            <div class="rodape-base">
+                <span class="aviso">Este projeto foi desenvolvido integralmente pela equipe, sem ajuda não autorizada de alunos não membros do projeto no processo de codificação.</span>
+            </div>
+
+            <div class="rodape-base">
+                <span>Fundamentos e Avaliação de Redes de Computadores 2026/2 <br> Engenharia de Computação <br> UNIPAMPA</span>
+            </div>
+        </footer>
+    </div>
+</body>
+</html>

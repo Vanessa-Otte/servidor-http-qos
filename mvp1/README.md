@@ -9,7 +9,7 @@ Para compilar e executar o projeto, é necessário um ambiente Linux com suporte
 O projeto foi desenvolvido e testado em ambiente Linux/WSL Ubuntu.
 
 ## Compilação e Execução
-A partir deste diretório, execute:
+A partir do diretório `mvp1`, execute:
 ```bash
 gcc -pthread servidor.c -o servidor
 ```
@@ -27,8 +27,3 @@ Para acessar a página disponibilizada pelo servidor, utilize um navegador.
 
 ## Declaração de autoria
 Este projeto foi desenvolvido integralmente pela equipe, sem ajuda não autorizada de alunos não membros do projeto no processo de codificação.
-
-<small>Fundamentos e Avaliação de Redes de Computadores</small>
-<small>Engenharia de Computação</small>
-<small>UNIPAMPA</small>
-<small>Semestre 2026/2</small>
